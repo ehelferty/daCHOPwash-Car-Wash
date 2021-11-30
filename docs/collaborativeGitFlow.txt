@@ -1,4 +1,0 @@
-This document has basically everything needed on using git collaboratively. I know one or two of you had said you hadn't really used it much, so let's try and follow this guideline for this project:
-https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
-
-If anyone has any trouble with it feel free to ask Graham, I'm pretty comfortable with it.
