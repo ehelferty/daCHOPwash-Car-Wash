@@ -1,0 +1,113 @@
+@startuml ChopWash-System-Class-Diagram
+
+left to right direction
+skinparam Style strictuml
+!theme amiga
+
+class ChopWash{}
+database "Da Chop Base"{
+
+}
+
+' Controllers
+class EmployeeController{}
+class WashController{}
+class CustomerController{}
+class InvoiceController{}
+
+
+' Services
+class EmployeeService
+class CustomerService
+class WashService
+class InvoiceService
+
+
+'Repos
+class EmployeeRepo{}
+class CustomerRepo{}
+class WashRepo{}
+class InvoiceRepo{}
+
+
+
+'Entities
+entity Customer{
+    *Integer customerId <<PK>>
+    --
+    *String firstName
+    *String lastName
+}
+entity Employee{
+   *Integer employeeId <<PK>>
+   --
+    *String firstName
+    *String lastName 
+    *role <<FK>>
+}
+entity Invoice {
+    *Integer washId <<PK>>
+    *Integer customerId <<PK>>
+    --
+    double invoiceTotal
+    double balance
+    date createdDate
+    date paidDate
+}
+entity Wash{
+    *Integer washId <<PK>>
+    --
+    *washerId <<FK>>
+    *customerId <<FK>>
+    *enum washType
+    *boolean complete 
+}
+entity Role{
+    *Integer roleId
+    --
+    String title
+    double salary
+}
+entity Payments{
+    *Integer paymentId <<PK>>
+    --
+
+}
+
+
+' Relationships
+ChopWash .. EmployeeController
+ChopWash .. CustomerController
+ChopWash .. WashController
+ChopWash .. InvoiceController
+
+EmployeeController .. EmployeeService
+CustomerController .. CustomerService
+WashController .. WashService
+InvoiceController .. InvoiceService
+
+EmployeeService .. EmployeeRepo
+CustomerService .. CustomerRepo
+WashService .. WashRepo
+InvoiceService .. InvoiceRepo
+
+EmployeeRepo ||--"*" Employee
+CustomerRepo o--"*" Customer
+InvoiceRepo o--"*" Invoice
+WashRepo o--"*" Wash
+
+Employee ||-left|{ Role
+Invoice ||-o{ Payments
+
+Wash ||-|| Customer
+Employee ||-|| Wash
+
+
+
+
+Employee --- "Da Chop Base"
+Customer --- "Da Chop Base"
+Wash --- "Da Chop Base"
+Invoice --- "Da Chop Base"
+
+@enduml
