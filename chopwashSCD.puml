@@ -17,17 +17,53 @@ class InvoiceController{}
 
 
 ' Services
-class EmployeeService
-class CustomerService
-class WashService
-class InvoiceService
+class EmployeeService{
+    assignEmployeeToWash(employeeId, washId)
+}
+class CustomerService{
+    List<Customer> findCustomersByPastDueInvoice()
+}
+class WashService{
+    addWash(washType)
+    List<Wash> findIncompleteWash()
+}
+class InvoiceService{
+    List<Invoice> findPastDueInvoices()
+}
 
 
 'Repos
-class EmployeeRepo{}
-class CustomerRepo{}
-class WashRepo{}
-class InvoiceRepo{}
+class EmployeeRepo{
+    addEmployee()
+    Employee findEmployeeById(employeeId)
+    Employee findEmployeeByFirstName(firstName)
+    Employee findEmployeeByLastName(lastName)
+    terminateEmployee(employeeId)
+    addRole(employeeId, roleId)
+    removeRole(employeeId, roleId)
+}
+class CustomerRepo{
+    addCustomer()
+    removeCustomer(customerId)
+    Customer findCustomerById(customerId)
+    Customer findCustomerByFirstName(firstName)
+    Customer findCustomerByLastName(lastName)
+}
+class WashRepo{
+    addWash()
+    boolean getCompleteStatus()
+    wash findWashById(washId)
+}
+class InvoiceRepo{
+    addInvoice()
+    Invoice findInvoiceById(washId, customerId)
+    Invoice findInvoiceByCustomerId(customerId)
+    Invoice findInvoiceByDate(createdDate)
+    Invoice makePayment(washId, customerId, amt)
+    Invoice findPaidInvoices()
+    Invoice findUnpaidInvoices()
+    double getBalance(invoiceId)
+}
 
 
 
@@ -44,6 +80,8 @@ entity Employee{
     *String firstName
     *String lastName 
     *role <<FK>>
+    *date hireDate
+    date terminationDate
 }
 entity Invoice {
     *Integer washId <<PK>>
@@ -71,7 +109,8 @@ entity Role{
 entity Payments{
     *Integer paymentId <<PK>>
     --
-
+    Integer invoiceId <<FK>>
+    double paymentValue
 }
 
 
@@ -102,8 +141,9 @@ Invoice ||-o{ Payments
 Wash ||-|| Customer
 Employee ||-|| Wash
 
-
-
+EmployeeService . WashService
+WashService . CustomerService
+CustomerService . InvoiceService
 
 Employee --- "Da Chop Base"
 Customer --- "Da Chop Base"
