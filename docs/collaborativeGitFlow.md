@@ -16,7 +16,7 @@ So you want to do some work on your portion of the project. To do that, best pra
 2. `git status` <-- make sure you don't have any changes that are still-to-be committed. If you haven't done any work yet, you shouldn't. 
 3. `git fetch` <-- download any changes made by others.
 If you're up to date, you can move on to the next step. If not:
-4. `git pull` <-- this pulls the work other people have done so that you're up to date.
+4. `git pull` <-- this applies the changes you previously fetched to your local work.
 Now you're up to date. Next, you want to do your work. In order to do this without causing trouble for yourself down the line:
 ### Create a Separate Branch 
 1. `git checkout -b <branchname>` The branch name can be whatever you want, this is local to you only so it doesn't have to be anything super serious. Still recommend to keep it professional in case you accidentally push this branch or something.
