@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import comp31.dachopwash.entities.Employee;
-import comp31.dachopwash.repositories.EmployeeRepo;
+import comp31.dachopwash.models.entities.Employee;
+import comp31.dachopwash.models.repositories.EmployeeRepo;
 import lombok.Data;
 
 @Service
