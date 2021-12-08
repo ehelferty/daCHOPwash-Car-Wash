@@ -9,5 +9,4 @@ public class DachopwashApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DachopwashApplication.class, args);
 	}
-
 }
