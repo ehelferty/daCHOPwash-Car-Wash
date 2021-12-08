@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+
+    <style>
+        table.border {border: black solid 1px; border-collapse: collapse; margin: auto;}
+        table.border td {border: black solid thin}
+        table.noborder td {border: none}
+        
+    </style>
+</head>
+<body>
+    <h1>Employees</h1>
+    <table class="border">
+        <tr th:each="employee:${employees}">
+            <td th:text=${employee.employeeFirstName}></td>
+            <td th:text=${employee.employeeLastName}></td>
+            <td th:text=${employee.employeeRole}></td>
+            <td th:text=${employee.employeeStartDate}></td>
+            <td th:text=${employee.employeeEndDate}></td>
+            <td th:text=${employee.employeeSalary}></td>
+        </tr>
+    </table>
+  
+</body>
+</html>

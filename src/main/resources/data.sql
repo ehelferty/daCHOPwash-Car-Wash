@@ -1,0 +1,6 @@
+INSERT INTO EMPLOYEE(EMPLOYEE_ID, EMPLOYEE_ROLE, EMPLOYEE_FIRST_NAME, 
+                    EMPLOYEE_LAST_NAME, EMPLOYEE_HIRE_DATE, EMPLOYEE_TERMINATION_DATE, EMPLOYEE_SALARY) VALUES
+( NULL, 'Manager' , 'Joe', 'McCarwash', '2021-01-01', NULL, 123456.99),
+( NULL, 'Accountant' , 'Jane', 'Moneyhandler', '2021-01-01', NULL, 79999.23),
+( NULL, 'Washer' , 'Jim', 'Buffer', '2021-01-01', '2021-02-02', 40000.24),
+( NULL, 'Washer', 'Jack', 'Waxer', '2021-01-01', NULL, 40000.24);
