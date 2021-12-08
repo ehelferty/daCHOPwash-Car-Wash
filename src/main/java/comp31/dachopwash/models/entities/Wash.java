@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,9 +25,11 @@ public class Wash {
     @Column(name="WASH_STATUS")
     private Integer washStatus;
 
-    @OneToOne(mappedBy = "wash")
+    @ManyToOne()
+    @JoinColumn(name="EMPLOYEE_ID")
     private Employee employee;
 
-    @OneToOne(mappedBy = "wash")
+    @ManyToOne()
+    @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
 }
