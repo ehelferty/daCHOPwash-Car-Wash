@@ -1,4 +1,4 @@
-package comp31.dachopwash.entities;
+package comp31.dachopwash.models.entities;
 
 import java.time.LocalDate;
 
