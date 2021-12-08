@@ -2,8 +2,9 @@ package comp31.dachopwash.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -15,11 +16,16 @@ import lombok.Data;
 public class Invoice {
     
     @Id
-    @Column(name="Wash_ID")
-    private Integer washID;
+    @Column(name="Invoice_ID")
+    private Integer InvoiceID;
 
-    @Column(name="Customer_ID")
-    private Integer customerID;
+    @OneToOne
+    @JoinColumn(name="Wash_ID")
+    private Wash wash;
+
+    @OneToOne
+    @JoinColumn(name="Customer_ID")
+    private Customer customer;
 
     @Column(name="Invoice_Total")
     private Double invoiceTotal;
