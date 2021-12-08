@@ -1,5 +1,4 @@
 package comp31.dachopwash.models.entities;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
