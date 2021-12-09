@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css\materialize.css"  media="screen,projection"/>
     <title>Index</title>
 </head>
 <body>
-    <a href="/employees">Employees</a>
+  <nav>
+    <div class="nav-wrapper teal lighten-2">
+        <div class="container">
+      <a href="#" class="brand-logo">DaChopWash</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/employees">Employees</a></li>
+        <li><a href="/washes">Washes</a></li>
+        <li><a href="/customers">Customers</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+  <main>
+  <div class="container">
+
+  <h1 class="center-align teal-text">
+      WELCOME
+  </h1>
+
+  <div class="row center-align">
+    <div class="col s6">
+    <img class="responsive-img" src="images/vehicle.svg">
+    <p>Are you interested in one of our excellent car washes?</p>
+    <a href="/washes" class="waves-effect waves-light btn pulse">BOOK WASH</a>
+    </div>
+    <div class="col s6">
+        <img class="responsive-img" src="images/make_it_rain.svg">
+        <p>Need to make a payment?</p>
+        <a href="/payments/pay" class="waves-effect waves-light btn">MAKE PAYMENT</a>
+    </div>
+  </div>
+</main>
+
+</div>
+
+<footer class="page-footer teal lighten-2">
+    <div class="footer-copyright">
+      <div class="container">
+      © Lucius Bossio, Graham Corcoran, Eric Helferty, Daniel Lalonde
+      <a class="grey-text text-lighten-4 right" href="https://github.com/LuciusBossio/daCHOPWash">GitHub</a>
+      </div>
+    </div>
+  </footer>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+
 </body>
 </html>
