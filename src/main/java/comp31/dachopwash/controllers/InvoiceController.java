@@ -18,6 +18,12 @@ public class InvoiceController {
     @GetMapping("")
     public String getInvoices(@RequestParam(required=false, name="id") String invoiceId, Model model)
     {
+
+        if (invoiceId != null) {
+            model.addAttribute("invoice", invoiceService.findInvoiceById(Integer.parseInt(invoiceId)));
+            return "payment";
+        }
+
         model.addAttribute("invoices", invoiceService.findInvoices());
         return "invoices";
     }

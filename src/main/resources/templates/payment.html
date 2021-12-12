@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Index')"></head>
+<body>
+<nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+<main>
+    <div class="container teal-text">
+        <h1>Hey, Thanks!</h1>
+        <p>Here at daChopWash, the vast majority of customers never pay us. 
+            Some say it's because we "are a bunch of nerds who can't even clean cars."
+            Others say that it's because "your website doesn't even have a functioning payment system, it just says 'Thanks'
+            and then marks my payment as complete, without me giving any credit card information."
+        </p>
+        <p>Whatever the reason, we're glad that you decided to pay. Below, find your invoice information and press the "Submit"
+            button to pay us. This really helps us stay in business.
+        </p>
+
+        <h2 class="center-align" th:text="${'Invoice #' + invoice.invoiceID}"></h2>
+        <h5 class="center-align" th:text="${invoice.wash.employee.employeeFirstName + ' did their best.'}"></h5>
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate">
+                      <label class="active" for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate">
+                      <label class="active" for="last_name">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="email" type="email" class="validate">
+                      <label class="active" for="email">Email</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">attach_money</i>
+                        <input id="payment" type="number" class="validate" step=0.01>
+                        <label class="active" for="payment">Payment</label>
+                      </div>
+                      <div class="input-field col s3">
+                        <i class="material-icons prefix">attach_money</i>
+                        <input id="tip" type="number" class="validate" placeholder=1000.00 step=100>
+                        <label class="active" for="tip">Tip</label>
+                      </div>
+                  </div>
+                  <button class="col s2 offset-s10 btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">favorite</i>
+                  </button>
+                  
+                </form>
+              </div>
+
+    </div>
+</main>
+
+<footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>

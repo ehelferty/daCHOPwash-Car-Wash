@@ -27,4 +27,8 @@ public class InvoiceService {
         List<Invoice> invoiceList = invoiceRepo.findAll();
         return invoiceList;
     }
+
+    public Invoice findInvoiceById(Integer invoiceID) {
+        return invoiceRepo.findInvoiceByinvoiceID(invoiceID);
+    }
 }
