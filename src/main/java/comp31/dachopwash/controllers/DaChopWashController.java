@@ -10,10 +10,4 @@ public class DaChopWashController {
     {
         return "index";
     }
-
-    @GetMapping("/error")
-    public String getError()
-    {
-        return "error";
-    }
 }
