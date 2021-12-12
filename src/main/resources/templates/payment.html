@@ -18,15 +18,16 @@
 
         <h2 class="center-align" th:text="${'Invoice #' + invoice.invoiceID}"></h2>
         <h5 class="center-align" th:text="${invoice.wash.employee.employeeFirstName + ' did their best.'}"></h5>
+        <h5 th:text="${'Outstanding Balance: $' + #numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">Outstanding Balance:</h5>
             <div class="row">
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="first_name" type="text" class="validate">
+                      <input id="first_name" type="text" class="validate" th:value="${invoice.customer.customerFirstName}">
                       <label class="active" for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                      <input id="last_name" type="text" class="validate">
+                      <input id="last_name" type="text" class="validate" th:value="${invoice.customer.customerLastName}">
                       <label class="active" for="last_name">Last Name</label>
                     </div>
                   </div>
@@ -37,12 +38,12 @@
                     </div>
                     <div class="input-field col s3">
                         <i class="material-icons prefix">attach_money</i>
-                        <input id="payment" type="number" class="validate" step=0.01>
+                        <input id="payment" type="number" step=0.01 th:value="${#numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">
                         <label class="active" for="payment">Payment</label>
                       </div>
                       <div class="input-field col s3">
                         <i class="material-icons prefix">attach_money</i>
-                        <input id="tip" type="number" class="validate" placeholder=1000.00 step=100>
+                        <input id="tip" type="number" placeholder=1000.00 step=100>
                         <label class="active" for="tip">Tip</label>
                       </div>
                   </div>
