@@ -10,5 +10,6 @@ import comp31.dachopwash.models.entities.Invoice;
 @Repository
 public interface InvoiceRepo extends CrudRepository<Invoice, Integer>{
     List<Invoice> findAll();
+    List<Invoice> findInvoiceByinvoiceBalanceGreaterThan(Double value);
     Invoice findInvoiceByinvoiceID(Integer invoiceID);
 }

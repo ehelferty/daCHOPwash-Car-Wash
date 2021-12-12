@@ -20,7 +20,7 @@
         <h5 class="center-align" th:text="${invoice.wash.employee.employeeFirstName + ' did their best.'}"></h5>
         <h5 th:text="${'Outstanding Balance: $' + #numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">Outstanding Balance:</h5>
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" action="/invoices" th:object=${paymentInfo} method="post">
                   <div class="row">
                     <div class="input-field col s6">
                       <input id="first_name" type="text" class="validate" th:value="${invoice.customer.customerFirstName}">
