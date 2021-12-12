@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -17,7 +19,7 @@ import lombok.Data;
 public class Employee{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EMPLOYEE_ID")
     Integer employeeId;
 
@@ -31,9 +33,11 @@ public class Employee{
     String employeeLastName;
 
     @Column(name = "EMPLOYEE_HIRE_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate employeeStartDate;
 
     @Column(name = "EMPLOYEE_TERMINATION_DATE", nullable = true)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate employeeEndDate;
 
     @Column(name = "EMPLOYEE_SALARY")

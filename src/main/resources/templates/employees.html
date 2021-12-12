@@ -1,30 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees</title>
-
-    <style>
-        table.border {border: black solid 1px; border-collapse: collapse; margin: auto;}
-        table.border td {border: black solid thin}
-        table.noborder td {border: none}
-        
-    </style>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Employees')"></head>
 <body>
+    <nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+    <main>
     <h1>Employees</h1>
-    <table class="border">
-        <tr th:each="employee:${employees}">
-            <td th:text=${employee.employeeFirstName}></td>
-            <td th:text=${employee.employeeLastName}></td>
-            <td th:text=${employee.employeeRole}></td>
-            <td th:text=${employee.employeeStartDate}></td>
-            <td th:text=${employee.employeeEndDate}></td>
-            <td th:text=${employee.employeeSalary}></td>
-        </tr>
-    </table>
-  
+
+    <div class="container row">
+        <div class="col s2">
+            
+            <label for="">Sort By:</label>
+            <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="role">Role</option>
+            </select>
+            <br>
+            <br>
+            <label for="">Hide:</label>
+            <select name="hideOptions" id="hide" multiple>
+                <option value="fired">Terminated Employees</option>
+                <option value="managers">Managers</option>
+                <option value="washers">Washer</option>
+                <option value="accountants">Accountant</option>
+            </select>
+            
+        </div>
+        <div class="col s10">
+            <table class="border">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Position</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Salary</th>
+                </tr>
+                <tr th:each="employee:${employees}">
+                    <td th:text=${employee.employeeFirstName}></td>
+                    <td th:text=${employee.employeeLastName}></td>
+                    <td th:text=${employee.employeeRole}></td>
+                    <td th:text=${employee.employeeStartDate}></td>
+                    <td th:text=${employee.employeeEndDate}></td>
+                    <td th:text=${employee.employeeSalary}></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h3>Add a New Employee</h3>
+    <div class="container">
+    
+        <form action="#" th:action="@{/employees}" th:object="${employee}" method="GET">
+            <label for="">First Name</label>
+            <input type="text" name="employeeFirstName" th:field="*{employeeFirstName}"/><br>
+            <label for="">Last Name</label>
+            <input type="text" name="employeeLastName" th:field="*{employeeLastName}"><br>
+            <label for="">Role Title</label>
+            <input type="text" name="employeeRole" th:field="*{employeeRole}"><br>
+            <label for="">Start Date</label>
+            <input type="date" name="employeeStartDate" th:field="*{employeeStartDate}"><br>
+            <label for="">Termination Date</label>
+            <input type="date" name="employeeEndDate" th:field="*{employeeEndDate}"><br> 
+            <label for="">Salary</label>
+            <input type="text" name="employeeSalary" th:field="*{employeeSalary}"><br> 
+            
+            <button class="waves-effect waves-light btn" name="submit" type="submit" value="0">Save</button>
+        
+        </form>
+    </div>
+    </main>
+    <footer th:replace="fragments/fragments.html :: footer"></footer>
 </body>
 </html>
