@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Customers')"></head>
+<body>
+    <nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+    <main>
+    <h1>Customers</h1>
+
+    <div class="container row">
+        
+        <table class="border">
+            <tr>
+                <th>Cusomer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr th:each="customer:${customers}">
+                <td th:text=${customer.customerId} style="width: 5rem;"></td>
+                <td th:text=${customer.customerFirstName}></td>
+                <td th:text=${customer.customerLastName}></td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>Add a New customer</h3>
+    <div class="container">
+    
+        <form action="#" th:action="@{/customers}" th:object="${customer}" method="GET">
+            <label for="">First Name</label>
+            <input type="text" name="customerFirstName" th:field="*{customerFirstName}"/><br>
+            <label for="">Last Name</label>
+            <input type="text" name="customerLastName" th:field="*{customerLastName}"><br>
+                        
+            <button class="waves-effect waves-light btn" name="submit" type="submit" value="0">Save</button>
+        
+        </form>
+    </div>
+    </main>
+    <footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>
+</html>

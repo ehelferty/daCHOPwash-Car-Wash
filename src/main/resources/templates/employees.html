@@ -31,6 +31,7 @@
         <div class="col s10">
             <table class="border">
                 <tr>
+                    <th>Emp. ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Position</th>
@@ -39,6 +40,7 @@
                     <th>Salary</th>
                 </tr>
                 <tr th:each="employee:${employees}">
+                    <td th:text=${employee.employeeId} style="width: 5rem;"></td>
                     <td th:text=${employee.employeeFirstName}></td>
                     <td th:text=${employee.employeeLastName}></td>
                     <td th:text=${employee.employeeRole}></td>

@@ -45,14 +45,4 @@ public class EmployeeService {
         employeeRepo.save(employee);
     }
 
-    // public void addEmployee(String firstName, String lastName, String role){
-    //     // DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
-    //     // LocalDate startDate = LocalDate.parse(employeeStartDate, formatter);
-        
-    //     employee = new Employee();
-    //     employee.setEmployeeFirstName(firstName);
-    //     employee.setEmployeeLastName(lastName);
-    //     employee.setEmployeeRole(role);
-    //     employeeRepo.save(employee);
-    // }
 }
