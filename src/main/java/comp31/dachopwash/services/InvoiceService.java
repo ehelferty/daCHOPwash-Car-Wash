@@ -41,15 +41,14 @@ public class InvoiceService {
         return invoiceRepo.findInvoiceByinvoiceID(invoiceID);
     }
 
-    @Transactional
     public void createPayment(Integer invoiceID, Double payment) {
         Payment newPayment = new Payment();
         Invoice invoice = invoiceRepo.findInvoiceByinvoiceID(invoiceID);
         newPayment.setInvoice(invoice);
         newPayment.setPaymentAmount(payment);
         paymentRepo.save(newPayment);
-        Double oldBalance = invoice.getInvoiceBalance();
-        invoice.setInvoiceBalance(oldBalance - payment);
+        invoice.setInvoiceBalance(invoice.getInvoiceBalance() - payment);
+        invoiceRepo.save(invoice);
     }
 
     public List<Payment> findPayments() {

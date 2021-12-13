@@ -20,7 +20,8 @@
         <h5 class="center-align" th:text="${invoice.wash.employee.employeeFirstName + ' did their best.'}"></h5>
         <h5 th:text="${'Outstanding Balance: $' + #numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">Outstanding Balance:</h5>
             <div class="row">
-                <form class="col s12" action="/invoices" th:object=${paymentInfo} method="post">
+                <form class="col s12" th:action="@{/invoices}" th:object="${paymentForm}" method="POST">
+                    <input type="hidden" id="invoiceId" th:name="invoiceId" th:value="${invoice.invoiceID}">
                   <div class="row">
                     <div class="input-field col s6">
                       <input id="first_name" type="text" class="validate" th:value="${invoice.customer.customerFirstName}">
@@ -38,7 +39,7 @@
                     </div>
                     <div class="input-field col s3">
                         <i class="material-icons prefix">attach_money</i>
-                        <input id="payment" type="number" step=0.01 th:value="${#numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">
+                        <input id="payment" type="number" step=0.01 th:name="payment" th:value="${#numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}">
                         <label class="active" for="payment">Payment</label>
                       </div>
                       <div class="input-field col s3">

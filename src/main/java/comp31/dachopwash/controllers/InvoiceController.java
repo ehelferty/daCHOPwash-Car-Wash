@@ -45,7 +45,10 @@ public class InvoiceController {
         @ModelAttribute PaymentFormModel paymentInfo,
         Model model)
         {
-            invoiceService.createPayment(paymentInfo.getInvoiceId(), paymentInfo.getPayment());
+            Integer id = paymentInfo.getInvoiceId();
+            Double payment = paymentInfo.getPayment();
+            invoiceService.createPayment(id, payment);
+            model.addAttribute("invoices", invoiceService.findInvoices());
             return "invoices";
         }
 
