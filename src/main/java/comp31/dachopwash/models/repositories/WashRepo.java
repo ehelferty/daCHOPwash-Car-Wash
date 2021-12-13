@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import comp31.dachopwash.models.entities.Wash;
 
 @Repository
-public interface WashRepo extends CrudRepository<Wash, Long> {
-    
+public interface WashRepo extends CrudRepository<Wash,Long> {
     
 }
