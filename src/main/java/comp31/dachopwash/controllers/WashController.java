@@ -17,9 +17,14 @@ public class WashController {
         this.washService = washService;
     }
     
-    @GetMapping("/wash")
+    @GetMapping("/washes")
     public String getWash(Model model) {
         model.addAttribute("wash", washService.findWashes());
         return "wash";
+    }
+
+    @GetMapping("/washes/book")
+    public String bookWash(Model model) {
+        return "book";
     }
 }

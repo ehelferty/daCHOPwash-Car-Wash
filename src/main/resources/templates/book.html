@@ -17,7 +17,7 @@
                 <div class="col s6">
                     <!-- <img class="responsive-img" src="/images/options.svg"> -->
                     <p>The Boring Stuff</p>
-                    <form action="#" th:action="@{/book}" th:object="${wash}>
+                    <form action="#" th:action="@{/washes}" th:object="${wash}">
                         <div class="input-field">
                             <input type="text" name="date" id="datepicker" class="datepicker">
                             <label for="datepicker">Choose Wash Date</label>
@@ -39,7 +39,7 @@
                             <label for="city">City</label>
                         </div>
                         <div class="input-field">
-                            <select name="province" name="province" id="province">
+                            <select name="province" id="province">
                                 <option value="" disabled hidden selected>...</option>
                                 <option value="AB">Alberta</option>
                                 <option value="BC">British Columbia</option>
