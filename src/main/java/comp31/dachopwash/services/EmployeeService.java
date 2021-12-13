@@ -33,13 +33,12 @@ public class EmployeeService {
         return employeeList;
     }
 
-    public void createEmployee(String firstName, String lastName, String roleTitle, LocalDate startDate, LocalDate endDate, double salary){
+    public void createEmployee(String firstName, String lastName, String roleTitle, LocalDate startDate, double salary){
         employee = new Employee();
         employee.setEmployeeFirstName(firstName);
         employee.setEmployeeLastName(lastName);
         employee.setEmployeeRole(roleTitle);
         employee.setEmployeeStartDate(startDate);
-        employee.setEmployeeEndDate(endDate);
         employee.setEmployeeSalary(salary);
 
         employeeRepo.save(employee);

@@ -42,7 +42,7 @@ public class EmployeeController {
         else{
             employeeService.createEmployee(newEmployee.getEmployeeFirstName(), newEmployee.getEmployeeLastName(), 
                                         newEmployee.getEmployeeRole(), newEmployee.getEmployeeStartDate(), 
-                                        newEmployee.getEmployeeEndDate(), newEmployee.getEmployeeSalary());
+                                        newEmployee.getEmployeeSalary());
             model.addAttribute("employee", new Employee());
             model.addAttribute("employees", employeeService.findEmployees());
         }

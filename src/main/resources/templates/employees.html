@@ -67,15 +67,14 @@
             <input type="text" name="employeeRole" th:field="*{employeeRole}"><br>
             <label for="">Start Date</label>
             <input type="date" name="employeeStartDate" th:field="*{employeeStartDate}"><br>
-            <label for="">Termination Date</label>
-            <input type="date" name="employeeEndDate" th:field="*{employeeEndDate}"><br> 
-            <label for="">Salary</label>
+            <label for="">Starting Salary</label>
             <input type="text" name="employeeSalary" th:field="*{employeeSalary}"><br> 
             
             <div style="text-align: center;" >
                 <button class="waves-effect waves-light btn" name="submit" type="submit" value="0">Save</button>
             </div>
         </form>
+    <span>&nbsp;</span>
     </div>
     </main>
     <footer th:replace="fragments/fragments.html :: footer"></footer>
