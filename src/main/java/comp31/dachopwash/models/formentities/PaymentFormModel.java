@@ -6,9 +6,6 @@ import lombok.Getter;
 @Data
 public class PaymentFormModel {
     
-    @Getter 
-    Long id;
-
     @Getter
     Integer invoiceId;
 

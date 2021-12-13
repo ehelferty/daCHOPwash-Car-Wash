@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Index')"></head>
+<body>
+    <nav th:replace="fragments/fragments.html :: navbar"></nav>
+    <main>
+      <div class="container teal-text">
+        <h2>DaChopWash Washes</h2>
+        <table>
+            <thead>
+              <tr>
+                  <th>Wash ID</th>
+                  <th>Customer ID</th>
+                  <th>Employee ID</th>
+                  <th>Wash Type</th>
+                  <th>Wash Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="wash:${wash}">
+                <td th:text="${wash.washId}"></td>
+                <td th:text="${wash.customer.customerId}"></td>
+                <td th:text="${wash.employee.employeeId}"></td>
+                <td th:text="${wash.washType}"></td>
+                <td th:text="${wash.washStatus}"></td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </main>
+    <footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>
+</html>

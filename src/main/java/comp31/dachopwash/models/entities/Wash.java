@@ -17,7 +17,7 @@ public class Wash {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="WASH_ID")
-    private Integer washID;
+    private Integer washId;
     
     @Column(name="WASH_TYPE")
     private Integer washType;
