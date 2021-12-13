@@ -5,10 +5,11 @@
     <nav th:replace="fragments/fragments.html :: navbar"></nav>
 
     <main>
-    <h1>Customers</h1>
-<div class="container row">
+    
+<div class="container row teal-text">
     <div class="col s3">&nbsp;</div>
     <div class="col s6">
+        <h1>Customers</h1>
         <table class="border">
             <tr>
                 <th>Customer ID</th>
@@ -24,9 +25,9 @@
     </div>
     <div class="col s3">&nbsp;</div>
 </div>
-    <h3>Add a New customer</h3>
-    <div class="container" style="max-width: 50%;">
-    
+    <span>&nbsp;</span>
+    <div class="container teal-text" style="max-width: 50%;">
+        <h3>Add a New customer</h3>
         <form action="#" th:action="@{/customers}" th:object="${customer}" method="GET">
             <label for="">First Name</label>
             <input type="text" name="customerFirstName" th:field="*{customerFirstName}"/><br>

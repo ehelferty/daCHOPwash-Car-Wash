@@ -43,16 +43,15 @@ public class EmployeeService {
         employeeRepo.save(employee);
     }
 
-    // public Employee findById(Integer id){
-    //     employee = new Employee();
-    //     employee = employeeRepo.findByEmployeeId(id);
-    //     return employee;
-    // }
+    public Employee findById(Integer id){
+        employee = employeeRepo.findByEmployeeId(id);
+        return employee;
+    }
 
-    // // public Employee deleteEmployee(Employee employee){
-    // //     employee = new Employee();
-    // //     employee = null;
-    // //     return employee;
-    // // }
+    public void fireEmployee(Integer empId){
+        employee = findById(empId);
+        employee.setEmployeeEndDate(LocalDate.now());
+    }
+
 
 }

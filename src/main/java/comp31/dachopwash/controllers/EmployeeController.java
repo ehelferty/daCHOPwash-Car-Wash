@@ -1,5 +1,8 @@
 package comp31.dachopwash.controllers;
 
+import java.time.LocalDate;
+
+import org.hibernate.query.criteria.internal.expression.function.CurrentDateFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,17 +53,13 @@ public class EmployeeController {
         return "employees";
     }  
 
-    // @GetMapping("/delete/{id}")
-    // public String deleteEmployee(@PathVariable(value="id") Integer employeeId, 
-    //                              @ModelAttribute Employee oldEmployee,
-    //                              Model model)
-    // {
-    //     oldEmployee = employeeService.findById(employeeId);
-    //     //oldEmployee = employeeService.deleteEmployee(oldEmployee);
-    //     oldEmployee=null;
-    //     model.addAttribute("employee", new Employee());                          
-    //     model.addAttribute("employees", employeeService.findEmployees());
-    //     return "employees";
-    // }
+    @PostMapping("")
+    public String fireEmployee(Model model, @RequestParam Integer firedEmpId)
+    {
+        employeeService.fireEmployee(firedEmpId);
+        model.addAttribute("employee", new Employee());                          
+        model.addAttribute("employees", employeeService.findEmployees());
+        return "employees";
+    }
    
 }
