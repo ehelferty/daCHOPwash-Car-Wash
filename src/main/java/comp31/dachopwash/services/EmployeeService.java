@@ -51,6 +51,7 @@ public class EmployeeService {
     public void fireEmployee(Integer empId){
         employee = findById(empId);
         employee.setEmployeeEndDate(LocalDate.now());
+        employeeRepo.save(employee);
     }
 
 
