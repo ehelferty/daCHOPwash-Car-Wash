@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import comp31.dachopwash.models.entities.Employee;
@@ -46,5 +49,18 @@ public class EmployeeController {
         
         return "employees";
     }  
+
+    // @GetMapping("/delete/{id}")
+    // public String deleteEmployee(@PathVariable(value="id") Integer employeeId, 
+    //                              @ModelAttribute Employee oldEmployee,
+    //                              Model model)
+    // {
+    //     oldEmployee = employeeService.findById(employeeId);
+    //     //oldEmployee = employeeService.deleteEmployee(oldEmployee);
+    //     oldEmployee=null;
+    //     model.addAttribute("employee", new Employee());                          
+    //     model.addAttribute("employees", employeeService.findEmployees());
+    //     return "employees";
+    // }
    
 }
