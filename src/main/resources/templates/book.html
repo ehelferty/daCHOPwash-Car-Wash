@@ -15,7 +15,6 @@
 
             <div class="row center-align">
                 <div class="col s6">
-                    <!-- <img class="responsive-img" src="/images/options.svg"> -->
                     <p>The Boring Stuff</p>
                     <form action="#" th:action="@{/washes}" th:object="${wash}">
                         <div class="input-field">
@@ -23,40 +22,14 @@
                             <label for="datepicker">Choose Wash Date</label>
                         </div>
                         <div class="input-field">
-                            <input type="email" name="email" id="email">
-                            <label for="email">Email</label>
+                            <input type="text" name="firstName" id="firstName">
+                            <label for="firstName">First Name</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" name="name" id="name">
-                            <label for="name">Full Name</label>
+                            <input type="text" name="lastName" id="lastName">
+                            <label for="lastName">Last Name</label>
                         </div>
-                        <div class="input-field">
-                            <input type="text" name="address" id="address">
-                            <label for="address">Address</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="text" name="city" id="city">
-                            <label for="city">City</label>
-                        </div>
-                        <div class="input-field">
-                            <select name="province" id="province">
-                                <option value="" disabled hidden selected>...</option>
-                                <option value="AB">Alberta</option>
-                                <option value="BC">British Columbia</option>
-                                <option value="MB">Manitoba</option>
-                                <option value="NB">New Brunswick</option>
-                                <option value="NL">Newfoundland and Labrador</option>
-                                <option value="NS">Nova Scotia</option>
-                                <option value="NT">Northwest Territories</option>
-                                <option value="NU">Nunavut</option>
-                                <option value="ON">Ontario</option>
-                                <option value="PE">Prince Edward Island</option>
-                                <option value="QC">Quebec</option>
-                                <option value="SK">Saskatchewan</option>
-                                <option value="YT">Yukon</option>
-                            </select>
-                            <label for="province">Province</label>
-                        </div>
+                        <img class="responsive-img" src="/images/options.svg">
                 </div>
                 <div class="col s6">
                     <p>The Fun Stuff</p>
@@ -65,7 +38,7 @@
                         <div class="row">
                             <div class="col s6">
                                 <label>
-                                    <input class="with-gap" name="washes" type="radio" value="simple" checked />
+                                    <input class="with-gap" name="washtype" type="radio" value="simple" checked />
                                     <span class="amber-text text-darken-4">Da Simple Wash</span>
                                 </label>
                             </div>
@@ -85,7 +58,7 @@
                         <div class="row">
                             <div class="col s6">
                                 <label>
-                                    <input class="with-gap" name="washes" type="radio" value="medium" />
+                                    <input class="with-gap" name="washtype" type="radio" value="medium" />
                                     <span class="amber-text text-darken-4">Da Medium Wash</span>
                                 </label>
                             </div>
@@ -107,7 +80,7 @@
                             <div class="col s6">
                                 <div>
                                     <label>
-                                        <input class="with-gap" name="washes" type="radio" value="crazy" />
+                                        <input class="with-gap" name="washtype" type="radio" value="crazy" />
                                         <span class="amber-text text-darken-4">Da Crazy Wash</span>
                                     </label>
                                 </div>

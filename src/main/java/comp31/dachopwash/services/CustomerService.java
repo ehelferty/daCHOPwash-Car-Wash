@@ -26,6 +26,10 @@ public class CustomerService {
         return customerList;
     }
 
+    public Customer findByFirstAndLastName(String firstName, String lastName) {
+        return customerRepo.findByCustomerFirstNameAndCustomerLastName(firstName, lastName);
+    }
+
     public void createCustomer(String firstName, String lastName){
         customer = new Customer();
         customer.setCustomerFirstName(firstName);

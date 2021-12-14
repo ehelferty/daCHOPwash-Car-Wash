@@ -10,5 +10,5 @@ import comp31.dachopwash.models.entities.Customer;
 @Repository
 public interface CustomerRepo extends CrudRepository<Customer, Integer>{
     List<Customer> findAll();
-    
+    Customer findByCustomerFirstNameAndCustomerLastName(String firstName, String astName);
 }
