@@ -28,7 +28,7 @@
                 <td th:text="'$' + ${employee.employeeSalary}"></td>
                 <td style="border-style: hidden;">
                     <form action="#" th:action="@{/employees}" method="POST">
-                        <button class="waves-affect btn" style="background-color: red;" type="submit" name="firedEmpId" th:value="*{employee.employeeId}">Fire</button>
+                        <button class="waves-affect btn" style="background-color: red;" type="submit" name="firedEmpId" th:value="*{employee.employeeId}" th:if="${employee.employeeEndDate == null}">Fire</button>
                     </form>
                 </td>
             </tr>
