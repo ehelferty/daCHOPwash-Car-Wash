@@ -49,7 +49,8 @@ public class WashService {
         Customer customer = customerService.findByFirstAndLastName(firstName, lastName);
         if(customer == null) {
             //for illustrative purposes, ideally you would create a new customer
-            customer = customerService.findByFirstAndLastName("Washma", "Car");
+            customerService.createCustomer(firstName, lastName);
+            customer = customerService.findByFirstAndLastName(firstName, lastName);
         }
 
         wash.setWashType(washType);
