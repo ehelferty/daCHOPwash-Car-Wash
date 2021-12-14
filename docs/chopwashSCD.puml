@@ -6,7 +6,6 @@ skinparam Style strictuml
 
 class ChopWash{}
 database "Da Chop Base"{
-
 }
 
 ' Controllers
@@ -15,10 +14,10 @@ class EmployeeController{
     String fireEmployee(employeeId)
 }
 class WashController{
-    String getWash()
-    String bookWash(firstName, lastName, washType)
-    String bookWash()
-    String markComplete(washId)
+    String getWash(model)
+    String bookWash(model)
+    String bookWash(model, wash, firstName, lastName, washType)   
+    String markComplete(model, washId)
 }
 class CustomerController{
     String getCustomers(firstName, lastName)
@@ -28,7 +27,6 @@ class InvoiceController{
     String addPayment()
     String getPayments()
 }
-
 
 ' Services
 class EmployeeService{
@@ -43,10 +41,10 @@ class CustomerService{
     createCustomer(firstName, lastName)
 }
 class WashService{
-    addWash(washType, firstName, lastName)
+    Wash addWash(washType, firstName, lastName)
     Iterable<Wash> findWashes()
     Wash findById(washId)
-    markComplete(washId)
+    void markComplete(washId)
 }
 class InvoiceService{
     List<Invoice> findInvoices()
@@ -55,7 +53,6 @@ class InvoiceService{
     createPayment(invoiceId, payment)
     List<Payment> findPayments()
 }
-
 
 'Repos
 class EmployeeRepo{
@@ -70,7 +67,7 @@ class CustomerRepo{
     Customer findCustomerByFirstNameAndCustomerLastName(firstName, lastName)
 }
 class WashRepo{
-    wash findWashById(washId)
+    Wash findWashById(washId)
 }
 class InvoiceRepo{
     List<Invoice> findAll()
@@ -80,8 +77,6 @@ class InvoiceRepo{
 class PaymentRepo{
     List<Payment> findAll()
 }
-
-
 
 'Entities
 entity Customer{
@@ -126,7 +121,6 @@ entity Payments{
     double paymentAmount
 }
 
-
 ' Relationships
 ChopWash .. EmployeeController
 ChopWash .. CustomerController
@@ -150,11 +144,10 @@ InvoiceRepo o--"*" Invoice
 PaymentRepo o--"*" Payments
 WashRepo o--"*" Wash
 
-
 Invoice ||-o{ Payments
 
-Wash ||-|| Customer
-Employee ||-|| Wash
+Employee ||-o{ Wash
+Wash }o-|| Customer
 
 EmployeeService . WashService
 WashService . CustomerService
