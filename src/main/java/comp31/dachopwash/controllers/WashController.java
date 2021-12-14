@@ -10,6 +10,9 @@ import comp31.dachopwash.models.entities.Wash;
 import comp31.dachopwash.services.WashService;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Allows users to interact with wash information. View and book washes.
+ */
 @Controller
 public class WashController {
     WashService washService;
@@ -20,20 +23,39 @@ public class WashController {
         this.washService = washService;
     }
 
+    /**
+     * Main wash info landing page.
+     * Displays all washes
+     * @param model
+     * @return
+     */
     @GetMapping("/washes")
     public String getWash(Model model) {
         model.addAttribute("wash", washService.findWashes());
         return "wash";
     }
 
+    /**
+     * Allows users to book a car wash
+     * @param model
+     * @return
+     */
     @GetMapping("/washes/book")
     public String bookWash(Model model) {
         return "book";
     }
 
-    @GetMapping("")
-    public String bookWash(Model model, @ModelAttribute Wash newWash,
-            @RequestParam(required = false) String date,
+    /**
+     * Collects form data, parses, and sends to addWash in services.
+     * @param model
+     * @param wash
+     * @param firstName
+     * @param lastName
+     * @param washtype
+     * @return
+     */
+    @GetMapping("/addWash")
+    public String bookWash(Model model, @ModelAttribute Wash wash,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String washtype) {
@@ -52,9 +74,9 @@ public class WashController {
                 washTypeInt = 2;
         }
 
-        washService.addWash(date, washTypeInt, firstName, lastName);
+        washService.addWash(washTypeInt, firstName, lastName);
 
-        return "book";
+        return "index";
     }
 
 }

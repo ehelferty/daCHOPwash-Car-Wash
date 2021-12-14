@@ -26,7 +26,14 @@ public class WashService {
         return washRepo.findAll();
     }
 
-    public Wash addWash(String date, Integer washType, String firstName, String lastName) {
+    /**
+     * Receives new wash info from form fills some blanks and persists the data
+     * @param washType
+     * @param firstName
+     * @param lastName
+     * @return
+     */
+    public Wash addWash(Integer washType, String firstName, String lastName) {
         Wash wash = new Wash();
 
         /**
@@ -34,13 +41,16 @@ public class WashService {
          */
         Customer customer = customerService.findByFirstAndLastName(firstName, lastName);
         if(customer == null) {
-            customerService.createCustomer(firstName, lastName);
+            //for illustrative purposes, ideally you would create a new customer
+            customer = customerService.findByFirstAndLastName("Washma", "Car");
         }
 
         wash.setWashType(washType);
         wash.setWashStatus(1);
         wash.setEmployee(employeeService.findById(1)); // Hard coded to illustrate functionality
         wash.setCustomer(customer);
+
+        washRepo.save(wash);
 
         return wash;
     }

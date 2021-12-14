@@ -16,10 +16,10 @@
             <div class="row center-align">
                 <div class="col s6">
                     <p>The Boring Stuff</p>
-                    <form action="#" th:action="@{/washes}" th:object="${wash}">
+                    <form action="/washes" th:action="@{/addWash}" th:object="${wash}">
                         <div class="input-field">
-                            <input type="text" name="date" id="datepicker" class="datepicker">
-                            <label for="datepicker">Choose Wash Date</label>
+                            <input type="text" name="date" id="date" class="datepicker">
+                            <label for="date">Choose Wash Date</label>
                         </div>
                         <div class="input-field">
                             <input type="text" name="firstName" id="firstName">
@@ -102,13 +102,13 @@
                     </div>
                 </div>
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Book
+                <button class="btn waves-effect waves-light" type="submit" name="action"
+                    onclick="return alert('You DaBest! Enjoy Your Wash!!!')">Book
                     <i class="material-icons right">send</i>
                 </button>
                 </form>
             </div>
         </div>
-
     </main>
 
     <footer th:replace="fragments/fragments.html :: footer"></footer>

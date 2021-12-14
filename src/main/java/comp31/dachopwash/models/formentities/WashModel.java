@@ -7,7 +7,10 @@ import comp31.dachopwash.models.entities.Employee;
 import lombok.Data;
 import lombok.Getter;
 
-@Data
+/**
+ * Model describing Wash data
+ */
+@Data 
 public class WashModel {
     
     @Getter
@@ -18,10 +21,20 @@ public class WashModel {
     Employee employee;
     Customer customer;
 
+    /**
+     * Sets a wash ID
+     */
     public WashModel() {
         washId = UUID.randomUUID().getLeastSignificantBits() & 0xFFFFFF;
     }
 
+    /**
+     * Creates a new wash with supplied data
+     * @param washType
+     * @param washStatus
+     * @param employee
+     * @param customer
+     */
     public WashModel(Integer washType, Integer washStatus, Employee employee, Customer customer) {
         this();
         this.washType= washType;
