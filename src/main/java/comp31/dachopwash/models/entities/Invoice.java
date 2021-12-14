@@ -21,7 +21,7 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="Invoice_ID")
-    private Integer InvoiceID;
+    private Integer invoiceID;
 
     @OneToOne
     @JoinColumn(name="Wash_ID")

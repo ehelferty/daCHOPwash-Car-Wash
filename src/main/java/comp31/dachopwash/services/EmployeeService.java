@@ -32,14 +32,27 @@ public class EmployeeService {
         return employeeList;
     }
 
-    // public void addEmployee(String firstName, String lastName, String role){
-    //     // DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
-    //     // LocalDate startDate = LocalDate.parse(employeeStartDate, formatter);
-        
-    //     employee = new Employee();
-    //     employee.setEmployeeFirstName(firstName);
-    //     employee.setEmployeeLastName(lastName);
-    //     employee.setEmployeeRole(role);
-    //     employeeRepo.save(employee);
-    // }
+    public void createEmployee(String firstName, String lastName, String roleTitle, LocalDate startDate, double salary){
+        employee = new Employee();
+        employee.setEmployeeFirstName(firstName);
+        employee.setEmployeeLastName(lastName);
+        employee.setEmployeeRole(roleTitle);
+        employee.setEmployeeStartDate(startDate);
+        employee.setEmployeeSalary(salary);
+
+        employeeRepo.save(employee);
+    }
+
+    public Employee findById(Integer id){
+        employee = employeeRepo.findByEmployeeId(id);
+        return employee;
+    }
+
+    public void fireEmployee(Integer empId){
+        employee = findById(empId);
+        employee.setEmployeeEndDate(LocalDate.now());
+        employeeRepo.save(employee);
+    }
+
+
 }

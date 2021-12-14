@@ -12,6 +12,7 @@ import comp31.dachopwash.models.entities.Employee;
 public interface EmployeeRepo extends CrudRepository<Employee,Integer>{
     List<Employee> findAll();
     List<Employee> findByEmployeeRole(String role);
+    Employee findByEmployeeId(Integer employeeId);
     Employee findByEmployeeFirstName(String firstName);
     Employee findByEmployeeLastName(String lastName);
 

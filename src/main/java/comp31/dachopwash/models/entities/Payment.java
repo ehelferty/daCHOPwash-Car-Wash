@@ -17,7 +17,7 @@ import lombok.Data;
 public class Payment {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="Payment_ID")
     private Integer paymentID;
 
