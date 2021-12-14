@@ -6,13 +6,15 @@ import org.springframework.stereotype.Service;
 import comp31.dachopwash.models.entities.Customer;
 import comp31.dachopwash.models.entities.Wash;
 import comp31.dachopwash.models.repositories.WashRepo;
+import lombok.Data;
 
 @Service
+@Data
 public class WashService {
-
     EmployeeService employeeService;
     CustomerService customerService;
     WashRepo washRepo;
+    Wash wash;
 
     @Autowired
     public WashService(WashRepo washRepo, EmployeeService employeeService, CustomerService customerService) {
@@ -21,9 +23,14 @@ public class WashService {
         this.employeeService = employeeService;
         this.customerService = customerService;
     }
-
+    
     public Iterable<Wash> findWashes() {
         return washRepo.findAll();
+    }
+
+    public Wash findById(Integer washId){
+        wash = washRepo.findByWashId(washId);
+        return wash;
     }
 
     /**
@@ -46,7 +53,7 @@ public class WashService {
         }
 
         wash.setWashType(washType);
-        wash.setWashStatus(1);
+        wash.setWashStatus(0);
         wash.setEmployee(employeeService.findById(1)); // Hard coded to illustrate functionality
         wash.setCustomer(customer);
 
@@ -55,4 +62,13 @@ public class WashService {
         return wash;
     }
 
+    /**
+     * Receives wash ID from mark complete button
+     * @param washId
+     */
+    public void markComplete(Integer washId){
+        wash = findById(washId);        
+        wash.setWashStatus(1);
+        washRepo.save(wash);
+    }
 }

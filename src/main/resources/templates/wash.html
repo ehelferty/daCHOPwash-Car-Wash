@@ -6,12 +6,13 @@
     <main>
       <div class="container teal-text">
         <h2>DaChopWash Washes</h2>
+        <a href="/washes/book" class="waves-effect waves-light btn">Book Wash</a>
         <table>
             <thead>
               <tr>
                   <th>Wash ID</th>
-                  <th>Customer ID</th>
-                  <th>Employee ID</th>
+                  <th>Customer</th>
+                  <th>Employee</th>
                   <th>Wash Type</th>
                   <th>Wash Status</th>
               </tr>
@@ -19,10 +20,24 @@
             <tbody>
               <tr th:each="wash:${wash}">
                 <td th:text="${wash.washId}"></td>
-                <td th:text="${wash.customer.customerId}"></td>
-                <td th:text="${wash.employee.employeeId}"></td>
-                <td th:text="${wash.washType}"></td>
-                <td th:text="${wash.washStatus}"></td>
+                <td th:text="${wash.customer.customerFirstName + ' ' + wash.customer.customerLastName}"></td>
+                <td th:text="${wash.employee.employeeFirstName + ' ' + wash.employee.employeeLastName}"></td>
+                <td th:switch="${wash.washType}">
+                  <span th:case="0">Simple</span>
+                  <span th:case="1">Medium</span>
+                  <span th:case="2">Crazy</span>
+                </td>              
+                <td>
+                  <span th:if="${wash.washStatus == 0}">Incomplete</span>
+                  <span th:unless="${wash.washStatus == 0}">Complete</span>
+                </td>
+                <td style="border-style: hidden;">
+                  <span th:if="${wash.washStatus == 0}">
+                    <form action="#" th:action="@{/washes}" method="POST">
+                        <button class="waves-affect btn" style="background-color: #1d9fce;" type="submit" name="washId" th:value="*{wash.washId}">Complete</button>
+                    </form>
+                  </span>
+                </td>
               </tr>
             </tbody>
         </table>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import comp31.dachopwash.models.entities.Wash;
 import comp31.dachopwash.services.WashService;
@@ -79,4 +80,18 @@ public class WashController {
         return "index";
     }
 
+    /**
+     * Mapping that updates wash status
+     * Displays all washes
+     * @param model
+     * @param washId
+     * @return 
+     */
+    @PostMapping("/washes")
+    public String markComplete(Model model, @RequestParam Integer washId)
+    {
+        washService.markComplete(washId);        
+        model.addAttribute("wash", washService.findWashes());
+        return "wash";
+    }
 }
