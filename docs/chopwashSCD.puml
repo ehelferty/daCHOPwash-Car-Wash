@@ -10,8 +10,8 @@ database "Da Chop Base"{
 
 ' Controllers
 class EmployeeController{
-    String getEmployees(firstName, lastName)
-    String fireEmployee(employeeId)
+    String getEmployees(model, firstName, lastName)
+    String fireEmployee(model, employeeId)
 }
 class WashController{
     String getWash(model)
@@ -20,12 +20,12 @@ class WashController{
     String markComplete(model, washId)
 }
 class CustomerController{
-    String getCustomers(firstName, lastName)
+    String getCustomers(model, firstName, lastName)
 }
 class InvoiceController{
-    String getInvoices(invoiceId, unpaidOnly)
-    String addPayment()
-    String getPayments()
+    String getInvoices(model, invoiceId, unpaidOnly)
+    String addPayment(model, paymentInfo)
+    String getPayments(model)
 }
 
 ' Services
