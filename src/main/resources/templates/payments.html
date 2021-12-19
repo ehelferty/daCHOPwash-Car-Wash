@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Index')"></head>
+<body>
+<nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+<main>
+    <div class="container teal-text">
+        <h2>DaChopWash Payments</h2>
+        <a href="/invoices" class="waves-effect waves-light btn">View Invoices</a>
+        <table>
+            <thead>
+              <tr>
+                  <th>PaymentID</th>
+                  <th>InvoiceID</th>
+                  <th>Customer</th>
+                  <th class="right-align">Payment Amount</th>
+                  <th class="center-align">Invoice Fully Paid</th>
+                  <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="payment:${payments}">
+                <td th:text="${payment.paymentID}"></td>
+                <td th:text="${payment.invoice.invoiceID}"></td>
+                <td th:text="${payment.invoice.customer.customerFirstName}"></td>
+                <td class="right-align" th:text="${'$' + #numbers.formatDecimal(payment.paymentAmount,1,2,'POINT')}"></td>
+                <td class="center-align">
+                    <div th:if="${payment.invoice.invoiceBalance <= 0}"><i class="material-icons">done</i>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</main>
+
+<footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>

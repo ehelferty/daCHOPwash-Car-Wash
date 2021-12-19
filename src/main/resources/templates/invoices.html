@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Index')"></head>
+<body>
+<nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+<main>
+    <div class="container teal-text">
+        <h2>DaChopWash Invoices</h2>
+        <p>This is a collection of the invoices we have generated here at DaChopWash.</p>
+        <a href="/invoices/payments" class="waves-effect waves-light btn">View Payments</a>
+        <table>
+            <thead>
+              <tr>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Washer</th>
+                  <th>Total</th>
+                  <th class="right-align">Balance</th>
+                  <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="invoice:${invoices}">
+                <td th:text="${invoice.customer.customerFirstName + ' ' + invoice.customer.customerLastName}"></td>
+                <td th:text="${#dates.format(invoice.createdDate, 'dd-MMM-yy')}"></td>
+                <td th:text="${invoice.wash.employee.employeeFirstName}"></td>
+                <td th:text="'$' + ${#numbers.formatDecimal(invoice.invoiceTotal,0,2,'POINT')}"></td>
+                <td class="right-align" th:text="'$' + ${#numbers.formatDecimal(invoice.invoiceBalance,1,2,'POINT')}"></td>
+                <td>
+                    <a th:href="@{/invoices?id=} + ${invoice.InvoiceID}" th:if="${invoice.invoiceBalance > 0}" class="secondary-content">
+                        <i class="material-icons">attach_money</i>
+                    </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</main>
+
+<footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>

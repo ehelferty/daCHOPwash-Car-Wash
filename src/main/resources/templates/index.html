@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragments.html :: headerfiles('Index')"></head>
+<body>
+  <nav th:replace="fragments/fragments.html :: navbar"></nav>
+
+  <main>
+    <div class="container">
+
+      <h1 class="center-align teal-text">
+          WELCOME
+      </h1>
+
+      <div class="row center-align">
+        <div class="col s6">
+          <img class="responsive-img" src="images/vehicle.svg">
+          <p>Are you interested in one of our excellent car washes?</p>
+          <a href="/washes/book" class="waves-effect waves-light btn">BOOK WASH</a>
+        </div>
+        <div class="col s6">
+          <img class="responsive-img" src="images/make_it_rain.svg">
+          <p>Need to make a payment?</p>
+          <a href="/invoices?unpaidOnly=true" class="waves-effect waves-light btn">MAKE PAYMENT</a>
+        </div>
+      </div>
+  </main>
+
+  <footer th:replace="fragments/fragments.html :: footer"></footer>
+</body>
+</html>

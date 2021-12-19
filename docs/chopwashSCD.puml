@@ -1,0 +1,161 @@
+@startuml ChopWash-System-Class-Diagram
+
+left to right direction
+skinparam Style strictuml
+!theme amiga
+
+class ChopWash{}
+database "Da Chop Base"{
+}
+
+' Controllers
+class EmployeeController{
+    String getEmployees(model, firstName, lastName)
+    String fireEmployee(model, employeeId)
+}
+class WashController{
+    String getWash(model)
+    String bookWash(model)
+    String bookWash(model, wash, firstName, lastName, washType)   
+    String markComplete(model, washId)
+}
+class CustomerController{
+    String getCustomers(model, firstName, lastName)
+}
+class InvoiceController{
+    String getInvoices(model, invoiceId, unpaidOnly)
+    String addPayment(model, paymentInfo)
+    String getPayments(model)
+}
+
+' Services
+class EmployeeService{
+    List<Employee> findEmployees()
+    createEmployee(firstName, lastName, roleTitle, startDate, salary)
+    Employee findById(employeeId)
+    fireEmployee(employeeId)
+}
+class CustomerService{
+    List<Customer> findCustomers()
+    Customer findByFirstAndLastName(firstName, lastName)
+    createCustomer(firstName, lastName)
+}
+class WashService{
+    Wash addWash(washType, firstName, lastName)
+    Iterable<Wash> findWashes()
+    Wash findById(washId)
+    void markComplete(washId)
+}
+class InvoiceService{
+    List<Invoice> findInvoices()
+    List<Invoice> findOutstandingInvoices()
+    Invoice findInvoiceById(invoiceId)
+    createPayment(invoiceId, payment)
+    List<Payment> findPayments()
+}
+
+'Repos
+class EmployeeRepo{
+    List<Employee> findAll()
+    List<Employee> findByEmployeeRole(role)
+    Employee findByEmployeeId(employeeId)
+    Employee findByEmployeeFirstName(firstName)
+    Employee findByEmployeeLastName(lastName)
+}
+class CustomerRepo{
+    List<Customer> findAll()
+    Customer findCustomerByFirstNameAndCustomerLastName(firstName, lastName)
+}
+class WashRepo{
+    Wash findWashById(washId)
+}
+class InvoiceRepo{
+    List<Invoice> findAll()
+    List<Invoice> findInvoiceByInvoiceBalanceGreaterThan(value)
+    Invoice findInvoiceByInvoiceId(invoiceId)
+}
+class PaymentRepo{
+    List<Payment> findAll()
+}
+
+'Entities
+entity Customer{
+    *Integer customerId <<PK>>
+    --
+    *String firstName
+    *String lastName
+}
+entity Employee{
+   *Integer employeeId <<PK>>
+   --
+    *String employeeFirstName
+    *String employeeLastName 
+    *String employeeRole
+    *LocalDate employeeStartDate
+    LocalDate employeeEndDate
+    double employeeSalary
+}
+entity Invoice {
+    *Integer washId <<PK>>
+    *Integer invoiceId <<PK>>
+    --
+    Customer customer <<FK>>
+    double invoiceTotal
+    double invoiceBalance
+    date createdDate
+    date paidDate
+}
+entity Wash{
+    *Integer washId <<PK>>
+    --
+    *Integer washType
+    *Integer washStatus 
+    *Employee employee <<FK>>
+    *Customer customer <<FK>>
+}
+
+entity Payments{
+    *Integer paymentId <<PK>>
+    --
+    Invoice invoice <<FK>>
+    double paymentAmount
+}
+
+' Relationships
+ChopWash .. EmployeeController
+ChopWash .. CustomerController
+ChopWash .. WashController
+ChopWash .. InvoiceController
+
+EmployeeController .. EmployeeService
+CustomerController .. CustomerService
+WashController .. WashService
+InvoiceController .. InvoiceService
+
+EmployeeService .. EmployeeRepo
+CustomerService .. CustomerRepo
+WashService .. WashRepo
+InvoiceService .. InvoiceRepo
+InvoiceService .. PaymentRepo
+
+EmployeeRepo ||--"*" Employee
+CustomerRepo o--"*" Customer
+InvoiceRepo o--"*" Invoice
+PaymentRepo o--"*" Payments
+WashRepo o--"*" Wash
+
+Invoice ||-o{ Payments
+
+Employee ||-o{ Wash
+Wash }o-|| Customer
+
+EmployeeService . WashService
+WashService . CustomerService
+CustomerService . InvoiceService
+
+Employee --- "Da Chop Base"
+Customer --- "Da Chop Base"
+Wash --- "Da Chop Base"
+Invoice --- "Da Chop Base"
+
+@enduml
